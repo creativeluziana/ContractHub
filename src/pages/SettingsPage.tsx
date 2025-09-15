@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PageHeader from '../components/PageHeader';
 import { 
   CogIcon,
   UserIcon,
@@ -36,16 +37,12 @@ const SettingsPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 xs:space-y-8">
       {/* Header */}
-      <div>
-        <h1 className="text-4xl font-light text-gray-900 tracking-tight">
-          Settings
-        </h1>
-        <p className="mt-2 text-lg text-gray-500 font-light">
-          Manage your account settings and preferences
-        </p>
-      </div>
+      <PageHeader
+        title="Settings"
+        subtitle="Manage your account settings and preferences"
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Sidebar */}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PageHeader from '../components/PageHeader';
 import { 
   ExclamationTriangleIcon,
   ClockIcon,
@@ -49,30 +50,15 @@ const InsightsPage: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 xs:space-y-8">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-4xl font-light text-gray-900 tracking-tight">
-            Contract Analytics
-          </h1>
-          <p className="mt-2 text-lg text-gray-500 font-light">
-            Advanced insights and performance metrics for your contract portfolio
-          </p>
-        </div>
-        <div className="flex items-center space-x-4">
-          <select
-            value={timeRange}
-            onChange={(e) => setTimeRange(e.target.value)}
-            className="px-4 py-2 border border-gray-200 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white shadow-soft"
-          >
-            <option value="7d">Last 7 days</option>
-            <option value="30d">Last 30 days</option>
-            <option value="90d">Last 90 days</option>
-            <option value="1y">Last year</option>
-          </select>
-        </div>
-      </div>
+      <PageHeader
+        title="Contract Analytics"
+        subtitle="Advanced insights and performance metrics for your contract portfolio"
+        showDateFilter={true}
+        dateFilterValue={timeRange}
+        onDateFilterChange={setTimeRange}
+      />
 
       {/* Key Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

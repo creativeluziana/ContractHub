@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import type { Contract } from '../types';
+import PageHeader from '../components/PageHeader';
+import { useContracts } from '../context/ContractsContext';
 import { 
   MagnifyingGlassIcon,
   PlusIcon,
@@ -12,34 +14,12 @@ import {
 } from '@heroicons/react/24/outline';
 
 const ContractsDashboard: React.FC = () => {
-  const [contracts, setContracts] = useState<Contract[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { contracts, loading, error } = useContracts();
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [riskFilter, setRiskFilter] = useState<string>('all');
   const [currentPage, setCurrentPage] = useState(1);
   const contractsPerPage = 10;
-
-  useEffect(() => {
-    fetchContracts();
-  }, []);
-
-  const fetchContracts = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch('/contracts.json');
-      if (!response.ok) {
-        throw new Error('Failed to fetch contracts');
-      }
-      const data = await response.json();
-      setContracts(data);
-    } catch (err) {
-      setError('Failed to load contracts');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
@@ -97,7 +77,7 @@ const ContractsDashboard: React.FC = () => {
         <p className="mt-1 text-sm text-gray-500">{error}</p>
         <div className="mt-6">
           <button
-            onClick={fetchContracts}
+            onClick={() => window.location.reload()}
             className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-blue-700"
           >
             Try again
@@ -130,28 +110,22 @@ const ContractsDashboard: React.FC = () => {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 xs:space-y-8">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-4xl font-light text-gray-900 tracking-tight">
-            Contract Portfolio
-          </h1>
-          <p className="mt-2 text-lg text-gray-500 font-light">
-            Manage, analyze, and optimize your contract ecosystem
-          </p>
-        </div>
-        <div className="flex items-center space-x-4">
-          <button className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-medium rounded-xl shadow-soft hover:shadow-medium transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]">
-            <PlusIcon className="mr-2 h-5 w-5" strokeWidth={1.5} />
+      <PageHeader
+        title="Contract Portfolio"
+        subtitle="Manage, analyze, and optimize your contract ecosystem"
+        action={
+          <Link to="/upload" className="hidden sm:inline-flex items-center px-6 xs:px-8 py-3 xs:py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-medium rounded-xl shadow-soft hover:shadow-medium transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] text-base xs:text-lg w-full xs:w-auto justify-center">
+            <PlusIcon className="mr-3 h-5 w-5 xs:h-6 xs:w-6" strokeWidth={1.5} />
             Upload Contract
-          </button>
-        </div>
-      </div>
+          </Link>
+        }
+      />
 
       {/* Stats Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-6 shadow-soft border border-gray-200/50">
+      <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-6 xs:gap-8">
+        <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-6 xs:p-8 shadow-soft border border-gray-200/50">
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <div className="h-12 w-12 bg-gradient-to-br from-success-500 to-success-600 rounded-xl flex items-center justify-center">
@@ -159,13 +133,13 @@ const ContractsDashboard: React.FC = () => {
               </div>
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-500">Active Contracts</p>
-              <p className="text-2xl font-light text-gray-900">{contracts.filter(c => c.status === 'Active').length}</p>
+              <p className="text-base font-medium text-gray-500">Active Contracts</p>
+              <p className="text-3xl font-light text-gray-900">{contracts.filter(c => c.status === 'Active').length}</p>
             </div>
           </div>
         </div>
         
-        <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-6 shadow-soft border border-gray-200/50">
+        <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-6 xs:p-8 shadow-soft border border-gray-200/50">
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <div className="h-12 w-12 bg-gradient-to-br from-warning-500 to-warning-600 rounded-xl flex items-center justify-center">
@@ -173,13 +147,13 @@ const ContractsDashboard: React.FC = () => {
               </div>
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-500">Renewal Due</p>
-              <p className="text-2xl font-light text-gray-900">{contracts.filter(c => c.status === 'Renewal Due').length}</p>
+              <p className="text-base font-medium text-gray-500">Renewal Due</p>
+              <p className="text-3xl font-light text-gray-900">{contracts.filter(c => c.status === 'Renewal Due').length}</p>
             </div>
           </div>
         </div>
         
-        <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-6 shadow-soft border border-gray-200/50">
+        <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-6 xs:p-8 shadow-soft border border-gray-200/50">
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <div className="h-12 w-12 bg-gradient-to-br from-danger-500 to-danger-600 rounded-xl flex items-center justify-center">
@@ -187,13 +161,13 @@ const ContractsDashboard: React.FC = () => {
               </div>
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-500">High Risk</p>
-              <p className="text-2xl font-light text-gray-900">{contracts.filter(c => c.risk === 'High').length}</p>
+              <p className="text-base font-medium text-gray-500">High Risk</p>
+              <p className="text-3xl font-light text-gray-900">{contracts.filter(c => c.risk === 'High').length}</p>
             </div>
           </div>
         </div>
         
-        <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-6 shadow-soft border border-gray-200/50">
+        <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-6 xs:p-8 shadow-soft border border-gray-200/50">
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <div className="h-12 w-12 bg-gradient-to-br from-accent-500 to-accent-600 rounded-xl flex items-center justify-center">
@@ -201,16 +175,16 @@ const ContractsDashboard: React.FC = () => {
               </div>
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-500">Total Value</p>
-              <p className="text-2xl font-light text-gray-900">$750K</p>
+              <p className="text-base font-medium text-gray-500">Total Value</p>
+              <p className="text-3xl font-light text-gray-900">$750K</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Search and Filters */}
-      <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-soft border border-gray-200/50 p-6">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      {/* Search and Filters - Hidden on mobile */}
+      <div className="hidden xs:block bg-white/80 backdrop-blur-xl rounded-2xl shadow-soft border border-gray-200/50 p-4 xs:p-6">
+        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 xs:gap-6">
           {/* Search */}
           <div className="lg:col-span-2">
             <label htmlFor="search" className="block text-sm font-medium text-gray-700 mb-2">
@@ -273,10 +247,10 @@ const ContractsDashboard: React.FC = () => {
       </div>
 
       {/* Contracts Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 xs:gap-6">
         {paginatedContracts.map((contract) => (
           <Link key={contract.id} to={`/contracts/${contract.id}`} className="group">
-            <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-soft border border-gray-200/50 p-6 hover:shadow-medium transition-all duration-300 transform hover:scale-[1.02] group-hover:border-primary-200">
+            <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-soft border border-gray-200/50 p-4 xs:p-6 hover:shadow-medium transition-all duration-300 transform hover:scale-[1.02] group-hover:border-primary-200">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
