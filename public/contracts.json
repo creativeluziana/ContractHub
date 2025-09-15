@@ -1,0 +1,152 @@
+[
+  {
+    "id": "c1",
+    "name": "MSA 2025",
+    "parties": "Microsoft & ABC Corp",
+    "expiry": "2025-12-31",
+    "status": "Active",
+    "risk": "Medium",
+    "startDate": "2024-01-01",
+    "value": "$500,000",
+    "clauses": [
+      {
+        "id": "cl1",
+        "title": "Service Level Agreement",
+        "summary": "99.9% uptime guarantee with penalties for downtime",
+        "confidence": 95
+      },
+      {
+        "id": "cl2",
+        "title": "Data Protection",
+        "summary": "GDPR compliance requirements and data handling procedures",
+        "confidence": 88
+      },
+      {
+        "id": "cl3",
+        "title": "Termination Clause",
+        "summary": "30-day notice period for contract termination",
+        "confidence": 92
+      }
+    ],
+    "aiInsights": [
+      {
+        "id": "ins1",
+        "type": "Risk",
+        "title": "Auto-renewal Risk",
+        "description": "Contract auto-renews without explicit consent",
+        "severity": "High",
+        "recommendation": "Add explicit renewal notification clause"
+      },
+      {
+        "id": "ins2",
+        "type": "Opportunity",
+        "title": "Volume Discount",
+        "description": "Eligible for 15% volume discount based on usage",
+        "severity": "Medium",
+        "recommendation": "Negotiate volume pricing terms"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "ev1",
+        "snippet": "The Service Provider shall maintain a minimum uptime of 99.9%...",
+        "relevance": 95,
+        "page": 12,
+        "section": "3.2"
+      },
+      {
+        "id": "ev2",
+        "snippet": "In case of data breach, notification must be provided within 72 hours...",
+        "relevance": 88,
+        "page": 8,
+        "section": "5.1"
+      }
+    ]
+  },
+  {
+    "id": "c2",
+    "name": "Network Services Agreement",
+    "parties": "TelNet & ABC Corp",
+    "expiry": "2025-10-10",
+    "status": "Renewal Due",
+    "risk": "High",
+    "startDate": "2023-10-10",
+    "value": "$250,000",
+    "clauses": [
+      {
+        "id": "cl4",
+        "title": "Network Availability",
+        "summary": "24/7 network monitoring and support",
+        "confidence": 90
+      },
+      {
+        "id": "cl5",
+        "title": "Maintenance Windows",
+        "summary": "Scheduled maintenance on Sundays 2-6 AM",
+        "confidence": 85
+      }
+    ],
+    "aiInsights": [
+      {
+        "id": "ins3",
+        "type": "Risk",
+        "title": "Renewal Deadline",
+        "description": "Contract expires in 30 days - urgent action required",
+        "severity": "Critical",
+        "recommendation": "Initiate renewal negotiations immediately"
+      },
+      {
+        "id": "ins4",
+        "type": "Risk",
+        "title": "Price Increase",
+        "description": "Standard 5% annual price increase clause",
+        "severity": "Medium",
+        "recommendation": "Negotiate price cap or fixed pricing"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "ev3",
+        "snippet": "This agreement shall automatically renew for successive one-year terms...",
+        "relevance": 92,
+        "page": 15,
+        "section": "8.1"
+      }
+    ]
+  },
+  {
+    "id": "c3",
+    "name": "NDA 2024",
+    "parties": "ABC Corp & XYZ Partners",
+    "expiry": "2024-11-01",
+    "status": "Expired",
+    "risk": "Low",
+    "startDate": "2023-11-01",
+    "value": "$0",
+    "clauses": [
+      {
+        "id": "cl6",
+        "title": "Confidentiality",
+        "summary": "Mutual confidentiality obligations for 2 years",
+        "confidence": 95
+      },
+      {
+        "id": "cl7",
+        "title": "Return of Materials",
+        "summary": "Return or destroy confidential materials upon termination",
+        "confidence": 90
+      }
+    ],
+    "aiInsights": [
+      {
+        "id": "ins5",
+        "type": "Info",
+        "title": "Contract Expired",
+        "description": "This NDA has expired and is no longer in effect",
+        "severity": "Low",
+        "recommendation": "Archive contract or renew if needed"
+      }
+    ],
+    "evidence": []
+  }
+]
