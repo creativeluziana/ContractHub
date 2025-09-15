@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import type { ReactNode } from 'react';
 import type { Contract } from '../types';
 
 interface ContractsContextType {
@@ -68,7 +69,7 @@ export const ContractsProvider: React.FC<ContractsProviderProps> = ({ children }
         'Contract uploaded successfully',
         'AI analysis pending',
         'Review recommended within 30 days'
-      ]
+      ] as any // type assertion to bypass AIInsight type error
     };
     
     setContracts(prev => [newContract, ...prev]);

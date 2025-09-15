@@ -2,12 +2,9 @@ import React, { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { useAuth } from '../../context/AuthContext';
 import { 
-  UserCircleIcon, 
   ArrowRightOnRectangleIcon,
   Bars3Icon,
   BellIcon,
-  QuestionMarkCircleIcon,
-  ChevronDownIcon,
   CogIcon
 } from '@heroicons/react/24/outline';
 
@@ -16,7 +13,7 @@ interface TopbarProps {
 }
 
 const Topbar: React.FC<TopbarProps> = ({ onMenuClick }) => {
-  const { user, logout } = useAuth();
+  const { logout } = useAuth();
 
   return (
     <div className="sticky top-0 z-40 flex h-18 shrink-0 items-center justify-between bg-black px-2 xs:px-4 sm:px-6 w-full">

@@ -5,11 +5,6 @@ import { useContracts } from '../context/ContractsContext';
 import { 
   CloudArrowUpIcon,
   DocumentTextIcon,
-  CalendarIcon,
-  CurrencyDollarIcon,
-  UserGroupIcon,
-  ExclamationTriangleIcon,
-  CheckCircleIcon,
   XMarkIcon
 } from '@heroicons/react/24/outline';
 
@@ -164,17 +159,6 @@ const UploadContractPage: React.FC = () => {
       <PageHeader
         title="Upload Contract"
         subtitle="Add new contracts to your portfolio with AI-powered analysis"
-        action={
-          <button
-            type="submit"
-            form="upload-form"
-            disabled={isUploading}
-            className="inline-flex items-center px-6 py-3 bg-black text-white font-medium rounded-xl shadow-soft hover:bg-gray-800 transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-          >
-            <CloudArrowUpIcon className="mr-2 h-5 w-5" strokeWidth={1.5} />
-            {isUploading ? 'Uploading...' : 'Upload Contract'}
-          </button>
-        }
       />
 
       <div className="max-w-4xl mx-auto">
@@ -383,7 +367,7 @@ const UploadContractPage: React.FC = () => {
           )}
 
           {/* Submit Button */}
-          <div className="flex justify-end space-x-4">
+          <div className="flex justify-center space-x-4">
             <button
               type="button"
               onClick={() => navigate('/dashboard')}

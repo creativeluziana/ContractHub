@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import type { Contract } from '../types';
 import PageHeader from '../components/PageHeader';
 import { useContracts } from '../context/ContractsContext';
 import { 
