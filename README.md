@@ -1,5 +1,9 @@
 # ContractHub - Contract Management System
 
+## 🚀 Live Demo
+
+**🌐 [View Live Application](https://contract-hub-five.vercel.app/login)**
+
 A modern, responsive contract management application built with React, TypeScript, and Tailwind CSS. This application provides a comprehensive solution for managing contracts with AI-powered insights, analytics, and document upload capabilities.
 
 ## 🚀 Features
@@ -45,8 +49,8 @@ A modern, responsive contract management application built with React, TypeScrip
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/creativeluziana/Contract.git
-   cd Contract
+   git clone https://github.com/creativeluziana/ContractHub.git
+   cd ContractHub
    ```
 
 2. **Install dependencies**
@@ -117,6 +121,7 @@ The application is fully responsive and optimized for mobile devices:
 
 ### Color Palette
 - **Primary**: Blue gradient (#3B82F6 to #1D4ED8)
+- **Dark Theme**: Deep blue (#1E2129) for navigation and accents
 - **Success**: Green (#10B981)
 - **Warning**: Yellow (#F59E0B)
 - **Danger**: Red (#EF4444)
@@ -183,6 +188,8 @@ npm run build
    - Output Directory: `dist`
 3. Deploy automatically on push to main branch
 
+**✅ Successfully Deployed**: [https://contract-hub-five.vercel.app/login](https://contract-hub-five.vercel.app/login)
+
 ### Deploy to Netlify
 1. Connect your GitHub repository to Netlify
 2. Configure build settings:
@@ -221,7 +228,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you encounter any issues or have questions:
 
-1. Check the [Issues](https://github.com/creativeluziana/Contract/issues) page
+1. Check the [Issues](https://github.com/creativeluziana/ContractHub/issues) page
 2. Create a new issue with detailed information
 3. Include steps to reproduce any bugs
 
