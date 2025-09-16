@@ -116,15 +116,16 @@ const UploadContractPage: React.FC = () => {
         parties: formData.parties,
         value: formData.value || '$0',
         expiry: formData.expiry,
-        status: 'Active',
-        risk: formData.risk,
-        type: formData.type,
-        description: formData.description,
+        status: 'Active' as const,
+        risk: formData.risk as 'Low' | 'Medium' | 'High',
+        startDate: new Date().toISOString().split('T')[0], // today's date
+        clauses: [],
+        evidence: [],
         aiInsights: [
           'Contract uploaded successfully',
           'AI analysis completed',
           'Review recommended within 30 days'
-        ]
+        ] as any
       };
 
       addContract(contractData);
